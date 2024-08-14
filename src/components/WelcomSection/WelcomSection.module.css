@@ -1,0 +1,31 @@
+.welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+}
+
+.image {
+  height: 100vh;
+  width: 1000px;
+  /* position: fixed; */
+  right: 800px;
+  top: 0;
+  background-image: linear-gradient(
+      to left,
+      rgb(255, 255, 255),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url(https://as1.ftcdn.net/v2/jpg/08/09/67/58/1000_F_809675821_5fpitkyRwgkrwL6MngMJVyb5rXvXHVIe.jpg);
+  background-size: cover;
+  background-position: 100%;
+}

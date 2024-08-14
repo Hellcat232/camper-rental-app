@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid black;
+  display: flex;
+  padding: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
