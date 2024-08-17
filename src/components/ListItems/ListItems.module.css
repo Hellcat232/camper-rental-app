@@ -1,0 +1,7 @@
+.list {
+  width: 890px;
+  margin-right: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

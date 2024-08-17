@@ -1,24 +1,21 @@
 import Item from "../Item/Item";
-import { selectItems } from "../../redux/api/selectors";
+import { selectAllItems } from "../../redux/api/selectors";
 import { useSelector } from "react-redux";
+import css from "./ListItems.module.css";
 
 const ListItems = () => {
-  const items = useSelector(selectItems);
+  const items = useSelector(selectAllItems);
 
   return (
-    <div
-      style={{
-        width: "890px",
-        marginRight: "64px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-      }}
-    >
+    <ul className={css.list}>
       {items.map((item) => {
-        return <Item key={item._id} item={item} />;
+        return (
+          <li key={item.id}>
+            <Item item={item} />
+          </li>
+        );
       })}
-    </div>
+    </ul>
   );
 };
 

@@ -1,0 +1,37 @@
+.modal {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-and-location {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.title-and-closeButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-img-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+}
+
+.modal-img {
+  width: 290px;
+  height: 310px;
+  object-fit: cover;
+  border-radius: 10px;
+}

@@ -2,10 +2,13 @@ import { getOffers } from "../../redux/api/operation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ListItems from "../../components/ListItems/ListItems";
-import { selectItems } from "../../redux/api/selectors";
+import { selectAllItems } from "../../redux/api/selectors";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
+  // const location = useLocation();
+
+  // console.log(location, "CatalogPage");
 
   useEffect(() => {
     dispatch(getOffers());
@@ -21,7 +24,7 @@ const CatalogPage = () => {
           alignItems: "flex-end",
         }}
       >
-        {selectItems && <ListItems />}
+        {selectAllItems.length > 0 && <ListItems />}
       </div>
     </>
   );
