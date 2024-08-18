@@ -1,0 +1,35 @@
+.review-wrap {
+  width: 910px;
+  height: 532px;
+  margin-top: 44px;
+  /* width: 430px; */
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.list {
+  max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.li {
+  display: flex;
+  flex-direction: column;
+}
+
+.ava-name-rat {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.name-rat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
