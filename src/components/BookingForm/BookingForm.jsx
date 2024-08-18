@@ -1,13 +1,12 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import Select from "react-select";
-import { TextField } from "@mui/material";
-import { TextareaAutosize } from "@mui/material";
+import css from "./BookingForm.module.css";
 
 const Validation = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup.string().required("Password is required"),
+  name: yup.string().required("Name is required"),
+  email: yup.string().required("Email is required"),
+  date: yup.string().required("Booking date is required"),
 });
 
 const BookingForm = () => {
@@ -22,29 +21,54 @@ const BookingForm = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label></label>
-      <input type="name" placeholder="Name" {...register("name")} />
-      {errors.email && <p className="">{errors.name.message}</p>}
+    <div>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <h3>Book your campervan now</h3>
+          <p>Stay connected! We are always ready to help you.</p>
+        </div>
+        <label></label>
+        <input
+          type="text"
+          className={css.input}
+          placeholder="Name"
+          {...register("name")}
+        />
+        {errors.name && <p className="">{errors.name.message}</p>}
 
-      <label className=""></label>
-      <input type="email" placeholder="Email" {...register("email")} />
-      {errors.password && <p>{errors.email.message}</p>}
+        <label></label>
+        <input
+          type="email"
+          className={css.input}
+          placeholder="Email"
+          {...register("email")}
+        />
+        {errors.password && <p>{errors.email.message}</p>}
 
-      <label className=""></label>
-      <input
-        type="Booking date"
-        placeholder="Booking date"
-        {...register("Booking date")}
-      />
-      {errors.password && <p>{errors.password.message}</p>}
+        <label></label>
+        <input
+          type="date"
+          className={css.input}
+          placeholder="Booking date"
+          {...register("Booking date")}
+        />
+        {errors.password && <p>{errors.password.message}</p>}
 
-      <label className=""></label>
-      <textarea type="text" placeholder={""} {...register("comment")} />
-      {errors.password && <p>{errors.password.message}</p>}
+        <label></label>
+        <textarea
+          type="text"
+          style={{ height: "115px" }}
+          className={css.input}
+          placeholder="comment"
+          {...register("comment")}
+        />
+        {errors.password && <p>{errors.password.message}</p>}
 
-      <button type="submit">send</button>
-    </form>
+        <button type="submit" className={css["send-btn"]}>
+          send
+        </button>
+      </form>
+    </div>
   );
 };
 

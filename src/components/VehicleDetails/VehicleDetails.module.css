@@ -1,0 +1,13 @@
+.size-div {
+  /* margin-top: 44px; */
+  /* margin-bottom: 48px; */
+  max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-size {
+  display: flex;
+  justify-content: space-between;
+}

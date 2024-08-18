@@ -1,1 +1,20 @@
+.details-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  padding: 12px 18px;
+  /* width: 126px; */
+  height: 44px;
+  gap: 5px;
+  background: #f2f4f7;
+  mix-blend-mode: multiply;
+}
 
+.div {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 430px;
+}

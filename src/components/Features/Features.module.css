@@ -1,11 +1,17 @@
-/* .features-block {
+.features-block {
   margin-top: 44px;
-  width: 430px;
+  /* width: 430px; */
   display: flex;
   flex-direction: row;
-} */
+}
 
-/* .info-about-camp {
+.info-about-camp {
+  /* gap: 8px; */
+  column-gap: 24px;
+  row-gap: 44px;
+  width: 910px;
+  height: 532px;
   display: flex;
-  gap: 8px;
-} */
+  flex-direction: column;
+  flex-wrap: wrap;
+}

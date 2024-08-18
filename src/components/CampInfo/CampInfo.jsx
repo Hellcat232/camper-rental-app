@@ -17,60 +17,60 @@ import { IoWaterOutline } from "react-icons/io5";
 
 const CampInfo = ({ details }) => {
   return (
-    <>
-      <li>
+    <div className={css.div}>
+      <span className={css["details-item"]}>
         <MdOutlineAir />
         AC {details.airConditioner}
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <MdOutlineBathroom /> {details.bathroom} bathroom
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <TbToolsKitchen2 /> {details.kitchen} kitchen
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <LiaBedSolid /> {details.beds} beds
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <GiTv /> {details.TV}
         TV
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <LuDisc3 /> {details.CD}
         CD
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <HiOutlineRadio /> {details.radio} radio
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <LiaShowerSolid /> {details.shower}
         shower
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <TbToiletPaper /> {details.toilet}
         toilet
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <TbFridge /> {details.freezer}
         freezer
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <TbCooker /> {details.hob}
         hob
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <LuMicrowave /> {details.microwave}
         microwave
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <FaGripfire /> {details.gas}
         gas
-      </li>
-      <li>
+      </span>
+      <span className={css["details-item"]}>
         <IoWaterOutline /> {details.water}
         water
-      </li>
-    </>
+      </span>
+    </div>
   );
 };
 
