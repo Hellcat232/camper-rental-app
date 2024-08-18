@@ -1,7 +1,33 @@
+.div {
+}
+
+.div:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .list {
+  margin-top: 30px;
   width: 890px;
   margin-right: 64px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.load-more-button {
+  background: #e44848;
+  color: #fff;
+  border-radius: 200px;
+  padding: 16px 40px;
+  width: 166px;
+  height: 56px;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.load-more-button:hover {
+  background: #dfa3a3;
 }

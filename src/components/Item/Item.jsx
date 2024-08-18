@@ -8,61 +8,82 @@ import { IoIosStarOutline } from "react-icons/io";
 import css from "./Item.module.css";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import ModalDetails from "../Modal/ModalDetails";
+import ModalPage from "../../pages/ModalPage/ModalPage";
+import { useSelector } from "react-redux";
+import { selectOpenModal } from "../../redux/api/selectors";
 
 const Item = ({ item }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const isOpenModal = useSelector(selectOpenModal);
+  const [modalIsOpen, setIsOpen] = useState(isOpenModal);
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location);
 
   const openModal = () => {
-    setIsOpen(true);
+    if (!modalIsOpen) {
+      setIsOpen(true);
+    }
     navigate(`/catalog/${item.id}`);
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    if (modalIsOpen) {
+      setIsOpen(false);
+    }
+
+    // setIsOpen(false);
     navigate(`/catalog`);
   };
 
-  const handleNavigate = () => {
-    openModal();
-    navigate(`/catalog/${item.id}`);
-  };
+  // const handleNavigate = () => {
+  //   openModal();
+  //   // navigate(`/catalog/${item.id}`);
+  // };
 
   return (
     <>
       <div className={css.card}>
-        <img src={item.gallery[0]} className={css["list-img"]} alt="" />
-        <h3>{item.name}</h3>
-        <div>
-          <Link to="reviews">
-            <IoIosStarOutline style={{ color: "#FFC531" }} />
-            {item.rating}
-            {`(${item.reviews.length} Reviews)`}
-          </Link>
-          <p>{item.location}</p>
-        </div>
-        <p className={css.description}>{item.description}</p>
-        <div>
-          <span>
-            <IoPeopleOutline /> {item.adults} adults
-          </span>
-          <span>
-            <TbAutomaticGearbox /> {item.transmission}
-          </span>
-          <span>
-            <LiaGasPumpSolid /> {item.engine}
-          </span>
-          <span>
-            <TbToolsKitchen2 /> Kitchen {item.details.kitchen}
-          </span>
-          <span>
-            <LiaBedSolid /> Beds {item.details.beds}
-          </span>
-          <span>AC {item.details.airConditioner}</span>
-          <button onClick={handleNavigate}>Show more...</button>
+        <div className={css["block-from-text"]}>
+          <img src={item.gallery[0]} className={css["list-img"]} alt="" />
+          <div className={css.size}>
+            <div>
+              <h3>{item.name}</h3>
+              <div className={css["reviews-location"]}>
+                <Link to={`/catalog/${item.id}/reviews`}>
+                  <IoIosStarOutline style={{ color: "#FFC531" }} />
+                  {item.rating}
+                  {`(${item.reviews.length} Reviews)`}
+                </Link>
+                <p>{item.location}</p>
+              </div>
+            </div>
+            <div style={{ width: "525px" }}>
+              <p className={css.description}>{item.description}</p>
+            </div>
+            <div className={css.details}>
+              <span className={css["details-item"]}>
+                <IoPeopleOutline /> {item.adults} adults
+              </span>
+              <span className={css["details-item"]}>
+                <TbAutomaticGearbox /> {item.transmission}
+              </span>
+              <span className={css["details-item"]}>
+                <LiaGasPumpSolid /> {item.engine}
+              </span>
+              <span className={css["details-item"]}>
+                <TbToolsKitchen2 /> Kitchen
+              </span>
+              <span className={css["details-item"]}>
+                <LiaBedSolid /> {item.details.beds} Beds
+              </span>
+              <span className={css["details-item"]}>
+                AC {item.details.airConditioner}
+              </span>
+            </div>
+            <button onClick={openModal} className={css["show-more-btn"]}>
+              Show more...
+            </button>
+          </div>
         </div>
 
         <div className={css["price-and-heart"]}>
@@ -71,11 +92,13 @@ const Item = ({ item }) => {
         </div>
       </div>
 
-      <ModalDetails
-        itemID={item.id}
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-      />
+      {modalIsOpen && (
+        <ModalPage
+          itemID={item.id}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+        />
+      )}
     </>
   );
 };

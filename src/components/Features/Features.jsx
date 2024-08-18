@@ -1,14 +1,16 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getOffersById } from "../../redux/api/operation";
+import { useDispatch } from "react-redux";
 
-const Features = () => {
-  // const location = useLocation();
-  // console.log(location, "Features");
+export default function Features() {
+  const location = useLocation();
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
   return (
     <>
-      <h1>Featuressssssss</h1>
+      <p>Features</p>
     </>
   );
-};
-
-export default Features;
+}

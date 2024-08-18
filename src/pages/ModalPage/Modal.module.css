@@ -1,0 +1,86 @@
+.modal {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-and-location {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.title-and-closeButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-img-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+}
+
+.modal-img {
+  width: 290px;
+  height: 310px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  /* width: 32px;
+  height: 32px; */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  border: 1px solid aliceblue;
+  background: rgb(235, 237, 237);
+  border-radius: 20px;
+}
+
+.link {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.active {
+}
+.active::after {
+  text-decoration: underline;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -25px;
+  height: 4px;
+  background-color: #e44848;
+  z-index: -1;
+}
+
+.link-block {
+  display: flex;
+  flex-direction: row;
+  margin-top: 44px;
+  gap: 40px;
+  border-bottom: 2px solid rgb(235, 237, 237);
+}

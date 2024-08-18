@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
 import WelcomeSection from "../../components/WelcomSection/WelcomSection";
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <div>
       <WelcomeSection />
     </div>
   );
-};
-
-export default HomePage;
+}

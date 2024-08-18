@@ -4,11 +4,8 @@ import { useDispatch } from "react-redux";
 import ListItems from "../../components/ListItems/ListItems";
 import { selectAllItems } from "../../redux/api/selectors";
 
-const CatalogPage = () => {
+export default function CatalogPage() {
   const dispatch = useDispatch();
-  // const location = useLocation();
-
-  // console.log(location, "CatalogPage");
 
   useEffect(() => {
     dispatch(getOffers());
@@ -28,6 +25,4 @@ const CatalogPage = () => {
       </div>
     </>
   );
-};
-
-export default CatalogPage;
+}

@@ -1,5 +1,3 @@
-const FavoritesPage = () => {
+export default function FavoritesPage() {
   return <p>FavoritesPage</p>;
-};
-
-export default FavoritesPage;
+}

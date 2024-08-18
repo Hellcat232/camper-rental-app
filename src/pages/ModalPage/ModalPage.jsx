@@ -1,18 +1,29 @@
 import Modal from "react-modal";
+import clsx from "clsx";
 import { NavLink, Outlet } from "react-router-dom";
-import { getOffersById } from "../../redux/api/operation";
+import { getOffersById } from "../../redux/api/operation.js";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import { IoIosStarOutline } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import css from "./Modal.module.css";
-import { selectAllItems, selectItem } from "../../redux/api/selectors.js";
+import { selectItem } from "../../redux/api/selectors.js";
+import { Suspense } from "react";
+import Features from "../../components/Features/Features.jsx";
+import Reviews from "../../components/Reviews/Reviews.jsx";
 
 Modal.setAppElement("#root");
 
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+};
+
 const customStyles = {
   content: {
+    position: "absolute",
+    overflow: "auto",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -20,18 +31,27 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "982px",
+    // height: "100%",
     borderRadius: "20px",
     padding: "40px",
   },
+  overlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+  },
 };
 
-const ModalDetails = ({ modalIsOpen, closeModal, itemID }) => {
+export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
   const itemDetail = useSelector(selectItem);
   const dispatch = useDispatch();
   const location = useLocation();
   const { id } = useParams();
 
-  console.log("Detail before click", itemDetail);
+  // console.log("Location into Modal", location);
 
   useEffect(() => {
     if (itemID && id === itemID) {
@@ -39,18 +59,27 @@ const ModalDetails = ({ modalIsOpen, closeModal, itemID }) => {
     }
   }, [dispatch, id, itemID]);
 
+  // useEffect(() => {
+  //   if (itemID) {
+  //     dispatch(getOffersById(itemID));
+  //   }
+  // }, [dispatch, itemID]);
+
   if (!itemDetail) {
-    return null; // или какой-то fallback UI
+    return null;
   }
 
-  console.log("Detail after click", itemDetail);
+  // console.log("Detail after click", itemDetail);
 
   return (
     <>
-      {itemDetail.map((item) => {
+      {itemDetail.map((item, index) => {
+        // console.log(item.id, "id into Modal");
+
         return (
           <div key={item.id} className={css.modal}>
             <Modal
+              // id={id}
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
               style={customStyles}
@@ -59,7 +88,9 @@ const ModalDetails = ({ modalIsOpen, closeModal, itemID }) => {
               <div className={css["modal-top"]}>
                 <div className={css["title-and-closeButton"]}>
                   <h3>{item.name}</h3>
-                  <button onClick={closeModal}>close</button>
+                  <button onClick={closeModal} className={css["close-btn"]}>
+                    <IoClose style={{ width: "32px", height: "32px" }} />
+                  </button>
                 </div>
 
                 <div className={css["review-and-location"]}>
@@ -94,17 +125,33 @@ const ModalDetails = ({ modalIsOpen, closeModal, itemID }) => {
                 <p>{item.description}</p>
               </div>
 
-              <div>
-                <NavLink to={`/catalog/${id}/features`}>Features</NavLink>
-                <NavLink to={`/catalog/${id}/reviews`}>Reviews</NavLink>
-              </div>
-              <Outlet />
+              {itemDetail.length > 0 && (
+                <div className={css["link-block"]}>
+                  <NavLink
+                    to={`/catalog/${id}/features`}
+                    className={buildLinkClass}
+                    state={location.state}
+                  >
+                    <Features />
+                  </NavLink>
+                  <NavLink
+                    to={`${id}/reviews`}
+                    className={buildLinkClass}
+                    state={location.state}
+                  >
+                    <Reviews />
+                  </NavLink>
+                </div>
+              )}
+              <Suspense fallback={null}>
+                <Outlet />
+              </Suspense>
             </Modal>
           </div>
         );
       })}
     </>
   );
-};
+}
 
-export default ModalDetails;
+// export default ModalDetails;
