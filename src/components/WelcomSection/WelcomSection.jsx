@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import css from "./WelcomSection.module.css";
+import { useNavigate } from "react-router-dom";
 
 const WelcomeSection = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/catalog");
+  };
+
   return (
     <>
       <div className={css.welcome}>
@@ -18,18 +25,11 @@ const WelcomeSection = () => {
             // src="https://as1.ftcdn.net/v2/jpg/08/09/67/58/1000_F_809675821_5fpitkyRwgkrwL6MngMJVyb5rXvXHVIe.jpg"
             alt=""
           />
+          <button onClick={handleClick} className={css.btn}>
+            Press Click
+          </button>
         </div>
-
-        <button
-          style={{
-            border: "2px solid black",
-            position: "absolute",
-            right: "100px",
-            top: "500px",
-          }}
-        >
-          <Link to="/catalog">press click</Link>
-        </button>
+        {/* <Link to="/catalog">press click</Link> */}
       </div>
     </>
   );
