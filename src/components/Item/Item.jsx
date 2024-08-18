@@ -31,14 +31,30 @@ const Item = ({ item }) => {
       setIsOpen(false);
     }
 
-    // setIsOpen(false);
     navigate(`/catalog`);
   };
 
-  // const handleNavigate = () => {
-  //   openModal();
-  //   // navigate(`/catalog/${item.id}`);
-  // };
+  const handleNavigate = () => {
+    openModal();
+    navigate(`/catalog/${item.id}/reviews`);
+  };
+
+  const toFavorite = () => {
+    const existingFavorites =
+      JSON.parse(localStorage.getItem("favoriteItems")) || [];
+
+    const isItemAlreadyFavorite = existingFavorites.some(
+      (favorite) => favorite.id === item.id
+    );
+
+    if (!isItemAlreadyFavorite) {
+      const updatedFavorites = [...existingFavorites, item];
+
+      localStorage.setItem("favoriteItems", JSON.stringify(updatedFavorites));
+    }
+
+    navigate("/favorites");
+  };
 
   return (
     <>
@@ -49,7 +65,10 @@ const Item = ({ item }) => {
             <div>
               <h3>{item.name}</h3>
               <div className={css["reviews-location"]}>
-                <Link to={`/catalog/${item.id}/reviews`}>
+                <Link
+                  to={`/catalog/${item.id}/reviews`}
+                  onClick={handleNavigate}
+                >
                   <IoIosStarOutline style={{ color: "#FFC531" }} />
                   {item.rating}
                   {`(${item.reviews.length} Reviews)`}
@@ -88,7 +107,7 @@ const Item = ({ item }) => {
 
         <div className={css["price-and-heart"]}>
           <strong>${item.price}</strong>
-          <IoMdHeartEmpty />
+          <IoMdHeartEmpty onClick={toFavorite} />
         </div>
       </div>
 
