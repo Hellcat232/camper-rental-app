@@ -13,6 +13,7 @@ import { selectItem } from "../../redux/api/selectors.js";
 import { Suspense } from "react";
 import Features from "../../components/Features/Features.jsx";
 import Reviews from "../../components/Reviews/Reviews.jsx";
+import { useState } from "react";
 
 Modal.setAppElement("#root");
 
@@ -31,7 +32,7 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "982px",
-    // height: "100%",
+    height: "100%",
     borderRadius: "20px",
     padding: "40px",
   },
@@ -50,7 +51,19 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const { id } = useParams();
+  const [activeTab, setActiveTab] = useState("description");
 
+  const renderContent = () => {
+    switch (activeTab) {
+      case "features":
+        return <Features id={itemID.id} item={itemDetail} />;
+      case "reviews":
+        return <Reviews id={itemID.id} item={itemDetail} />;
+
+      default:
+        null;
+    }
+  };
   // console.log("Location into Modal", location);
 
   useEffect(() => {
@@ -79,7 +92,6 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
         return (
           <div key={item.id} className={css.modal}>
             <Modal
-              // id={id}
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
               style={customStyles}
@@ -131,18 +143,23 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
                     to={`/catalog/${id}/features`}
                     className={buildLinkClass}
                     state={location.state}
+                    onClick={() => setActiveTab("features")}
                   >
-                    <Features />
+                    Features
                   </NavLink>
                   <NavLink
                     to={`${id}/reviews`}
                     className={buildLinkClass}
                     state={location.state}
+                    onClick={() => setActiveTab("reviews")}
                   >
-                    <Reviews />
+                    Reviews
                   </NavLink>
                 </div>
               )}
+
+              <div>{renderContent()}</div>
+
               <Suspense fallback={null}>
                 <Outlet />
               </Suspense>
