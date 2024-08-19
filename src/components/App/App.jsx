@@ -32,7 +32,12 @@ const App = () => {
             </Route>
           </Route>
 
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/favorites" element={<FavoritesPage />}>
+            <Route path="/favorites/:id/" element={<ModalPage />}>
+              <Route path="features" element={<Features />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

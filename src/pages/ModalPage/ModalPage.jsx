@@ -131,7 +131,7 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
               {itemDetail.length > 0 && (
                 <div className={css["link-block"]}>
                   <NavLink
-                    to={`/catalog/${id}/features`}
+                    to={`${id}/features`}
                     className={buildLinkClass}
                     state={location.state}
                     onClick={() => setActiveTab("features")}

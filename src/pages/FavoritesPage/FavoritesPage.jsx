@@ -1,7 +1,8 @@
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import css from "./FavoritesPage.module.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import ModalPage from "../ModalPage/ModalPage";
 
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoPeopleOutline } from "react-icons/io5";
@@ -18,6 +19,7 @@ export default function FavoritesPage() {
   const [modalIsOpen, setIsOpen] = useState(isOpenModal);
   const navigate = useNavigate();
   const location = useLocation();
+  const { id } = useParams();
   const [favoritesItems, setFavoritesItems] = useState(
     JSON.parse(localStorage.getItem("favoriteItems")) || []
   );
@@ -26,16 +28,24 @@ export default function FavoritesPage() {
     navigate(`/catalog`);
   };
 
-  const openModal = () => {
+  const openModal = (id) => {
     if (!modalIsOpen) {
       setIsOpen(true);
     }
-    navigate(`/catalog/${favoritesItems.id}`);
+    navigate(`/favorites/${id}`);
   };
 
-  const handleNavigate = () => {
+  const closeModal = () => {
+    if (modalIsOpen) {
+      setIsOpen(false);
+    }
+
+    navigate(`/favorites`);
+  };
+
+  const handleNavigate = (id) => {
     openModal();
-    navigate(`/catalog/${item.id}/reviews`);
+    navigate(`/favorites/${id}/reviews`);
   };
 
   const onDelete = (id) => {
@@ -67,8 +77,8 @@ export default function FavoritesPage() {
                     <h3>{item.name}</h3>
                     <div className={css["reviews-location"]}>
                       <Link
-                        to={`/catalog/${item.id}/reviews`}
-                        onClick={handleNavigate}
+                        to={`/favorites/${item.id}/reviews`}
+                        onClick={() => handleNavigate(item.id)}
                       >
                         <IoIosStarOutline style={{ color: "#FFC531" }} />
                         {item.rating}
@@ -100,7 +110,10 @@ export default function FavoritesPage() {
                       AC {item.details.airConditioner}
                     </span>
                   </div>
-                  <button onClick={openModal} className={css["show-more-btn"]}>
+                  <button
+                    onClick={() => openModal(item.id)}
+                    className={css["show-more-btn"]}
+                  >
                     Show more...
                   </button>
                 </div>
@@ -110,6 +123,14 @@ export default function FavoritesPage() {
                 <strong>${item.price}</strong>
                 <IoClose onClick={() => onDelete(item.id)} />
               </div>
+
+              {modalIsOpen && (
+                <ModalPage
+                  itemID={item.id}
+                  modalIsOpen={modalIsOpen}
+                  closeModal={closeModal}
+                />
+              )}
             </div>
           );
         })}
