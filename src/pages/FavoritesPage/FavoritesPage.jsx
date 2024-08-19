@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import css from "./FavoritesPage.module.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -17,13 +17,12 @@ export default function FavoritesPage() {
   const isOpenModal = useSelector(selectOpenModal);
   const [modalIsOpen, setIsOpen] = useState(isOpenModal);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [favoritesItems, setFavoritesItems] = useState(
+    JSON.parse(localStorage.getItem("favoriteItems")) || []
+  );
 
-  // Извлекаем массив избранных объектов из localStorage
-  const favoritesItems =
-    JSON.parse(localStorage.getItem("favoriteItems")) || [];
-
-  // Обработка клика на карточку для перехода к деталям
-  const handleCardClick = (item) => {
+  const handleCardClick = () => {
     navigate(`/catalog`);
   };
 
@@ -34,14 +33,29 @@ export default function FavoritesPage() {
     navigate(`/catalog/${favoritesItems.id}`);
   };
 
-  // Проверка, есть ли избранные элементы
+  const handleNavigate = () => {
+    openModal();
+    navigate(`/catalog/${item.id}/reviews`);
+  };
+
+  const onDelete = (id) => {
+    const updatedFavorites = favoritesItems.filter((item) => item.id !== id);
+    setFavoritesItems(updatedFavorites);
+    localStorage.setItem("favoriteItems", JSON.stringify(updatedFavorites));
+  };
+
   if (favoritesItems.length === 0) {
-    return <p>No favorite items yet.</p>;
+    navigate("/catalog");
+    <p>No favorite items yet.</p>;
   }
 
   return (
-    <>
-      <button onClick={handleCardClick}>Back Link</button>
+    <div className={css.list}>
+      <div style={{ display: "flex" }}>
+        <button onClick={handleCardClick} className={css["back-link-btn"]}>
+          Back Link
+        </button>
+      </div>
       {favoritesItems.length > 0 &&
         favoritesItems.map((item) => {
           return (
@@ -54,7 +68,7 @@ export default function FavoritesPage() {
                     <div className={css["reviews-location"]}>
                       <Link
                         to={`/catalog/${item.id}/reviews`}
-                        // onClick={handleNavigate}
+                        onClick={handleNavigate}
                       >
                         <IoIosStarOutline style={{ color: "#FFC531" }} />
                         {item.rating}
@@ -94,11 +108,11 @@ export default function FavoritesPage() {
 
               <div className={css["price-and-heart"]}>
                 <strong>${item.price}</strong>
-                <IoClose onClick="" />
+                <IoClose onClick={() => onDelete(item.id)} />
               </div>
             </div>
           );
         })}
-    </>
+    </div>
   );
 }

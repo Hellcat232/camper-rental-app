@@ -66,7 +66,6 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
         null;
     }
   };
-  // console.log("Location into Modal", location);
 
   useEffect(() => {
     if (itemID && id === itemID) {
@@ -74,23 +73,13 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
     }
   }, [dispatch, id, itemID]);
 
-  // useEffect(() => {
-  //   if (itemID) {
-  //     dispatch(getOffersById(itemID));
-  //   }
-  // }, [dispatch, itemID]);
-
   if (!itemDetail) {
     return null;
   }
 
-  // console.log("Detail after click", itemDetail);
-
   return (
     <>
       {itemDetail.map((item, index) => {
-        // console.log(item.id, "id into Modal");
-
         return (
           <div key={item.id} className={css.modal}>
             <Modal
