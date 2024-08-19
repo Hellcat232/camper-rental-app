@@ -14,8 +14,6 @@ export default function Features() {
   const dispatch = useDispatch();
   const detailsOfFeatures = useSelector(selectItem);
 
-  console.log(detailsOfFeatures, "detailsOfFeatures");
-
   useEffect(() => {
     dispatch(getOffersById(id));
   }, [dispatch, id]);
@@ -29,7 +27,7 @@ export default function Features() {
               <ul className={css["info-about-camp"]}>
                 <CampInfo details={detaile.details} />
                 <VehicleDetails details={detaile} />
-                <BookingForm />
+                <BookingForm item={detaile} />
               </ul>
             </div>
           );

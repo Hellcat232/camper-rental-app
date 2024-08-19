@@ -2,27 +2,61 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import css from "./BookingForm.module.css";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectOpenModal } from "../../redux/api/selectors";
 
 const Validation = yup.object().shape({
   name: yup.string().required("Name is required"),
   email: yup.string().required("Email is required"),
-  date: yup.string().required("Booking date is required"),
+  date: yup.date().required("Booking date is required"),
 });
 
-const BookingForm = () => {
+const BookingForm = ({ item }) => {
+  const isOpenModal = useSelector(selectOpenModal);
+  const [modalIsOpen, setIsOpen] = useState(isOpenModal);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(Validation),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onClose = () => {
+    if (modalIsOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  const toCatalog = () => {
+    navigate(`/catalog`);
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+    onClose();
+  };
 
   return (
     <div>
-      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className={css.form}
+        onSubmit={handleSubmit((event) =>
+          onSubmit({
+            name: event.name,
+            email: event.email,
+            date: event.date,
+            comment: event.comment,
+            item: item,
+          })
+        )}
+      >
         <div>
           <h3>Book your campervan now</h3>
           <p>Stay connected! We are always ready to help you.</p>
@@ -43,16 +77,16 @@ const BookingForm = () => {
           placeholder="Email"
           {...register("email")}
         />
-        {errors.password && <p>{errors.email.message}</p>}
+        {errors.email && <p>{errors.email.message}</p>}
 
         <label></label>
         <input
           type="date"
           className={css.input}
           placeholder="Booking date"
-          {...register("Booking date")}
+          {...register("date")}
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.date && <p>{errors.date.message}</p>}
 
         <label></label>
         <textarea
@@ -62,9 +96,9 @@ const BookingForm = () => {
           placeholder="comment"
           {...register("comment")}
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.comment && <p>{errors.comment.message}</p>}
 
-        <button type="submit" className={css["send-btn"]}>
+        <button onClick={toCatalog} type="submit" className={css["send-btn"]}>
           send
         </button>
       </form>

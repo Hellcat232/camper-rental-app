@@ -10,18 +10,12 @@ import { lightGreen } from "@mui/material/colors";
 import { light } from "@mui/material/styles/createPalette";
 import { useState } from "react";
 
-// const buildLinkClass = ({ isActive }) => {
-//   return clsx(css.link, isActive && css.active);
-// };
-
 export default function Reviews() {
   const location = useLocation();
   const { id } = useParams();
   const dispatch = useDispatch();
   const detailsOfReviews = useSelector(selectItem);
   const [value, setValue] = useState(2);
-
-  console.log(detailsOfReviews, "detailsOfReviews");
 
   useEffect(() => {
     dispatch(getOffersById(id));
@@ -45,9 +39,6 @@ export default function Reviews() {
                     <Rating
                       name="simple-controlled"
                       value={detaile.reviews[0].reviewer_rating}
-                      // onChange={(event, newValue) => {
-                      //   setValue(newValue);
-                      // }}
                     />
                   </div>
                 </div>
@@ -66,9 +57,6 @@ export default function Reviews() {
                     <Rating
                       name="simple-controlled"
                       value={detaile.reviews[1].reviewer_rating}
-                      // onChange={(event, newValue) => {
-                      //   setValue(newValue);
-                      // }}
                     />
                   </div>
                 </div>

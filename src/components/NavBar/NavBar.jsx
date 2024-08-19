@@ -43,16 +43,16 @@ const NavBar = () => {
   };
 
   return (
-    <div>
+    <div style={{ borderBottom: "1px solid black" }}>
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{ color: "red" }}
+        sx={{ color: "red", marginLeft: "20px" }}
       >
-        Dashboard
+        Menu
       </Button>
       <Menu
         id="basic-menu"

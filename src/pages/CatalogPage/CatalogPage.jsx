@@ -1,8 +1,10 @@
 import { getOffers } from "../../redux/api/operation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import css from "./Catalog.module.css";
 import ListItems from "../../components/ListItems/ListItems";
 import { selectAllItems } from "../../redux/api/selectors";
+import SideBar from "../../components/SideBar/SideBar";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -13,14 +15,8 @@ export default function CatalogPage() {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-end",
-        }}
-      >
+      <div className={css["catalog-page"]}>
+        <SideBar />
         {selectAllItems.length > 0 && <ListItems />}
       </div>
     </>
