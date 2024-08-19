@@ -93,3 +93,26 @@
 .show-more-btn:hover {
   background: #dfa3a3;
 }
+
+.btn-heart {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+}
+
+.empty-heart {
+  fill: black;
+}
+
+.empty-heart:hover {
+  fill: #e44848;
+}
+
+.full-heart {
+  fill: red;
+}
+
+.full-heart:hover {
+  fill: #dfa3a3;
+}

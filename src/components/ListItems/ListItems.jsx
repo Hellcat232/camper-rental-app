@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import css from "./ListItems.module.css";
 import { useState } from "react";
 
-const ListItems = ({ handleNavigate }) => {
+const ListItems = () => {
   const items = useSelector(selectAllItems);
 
   const itemsPerPage = 4;
@@ -20,7 +20,7 @@ const ListItems = ({ handleNavigate }) => {
         {items.slice(0, visibleItems).map((item) => {
           return (
             <li key={item.id}>
-              <Item item={item} handleNavigate={handleNavigate} />
+              <Item item={item} />
             </li>
           );
         })}

@@ -121,7 +121,12 @@ export default function FavoritesPage() {
 
               <div className={css["price-and-heart"]}>
                 <strong>${item.price}</strong>
-                <IoClose onClick={() => onDelete(item.id)} />
+                <button
+                  onClick={() => onDelete(item.id)}
+                  className={css["del-btn"]}
+                >
+                  <IoClose size="24px" className={css.icon} />
+                </button>
               </div>
 
               {modalIsOpen && (

@@ -123,3 +123,19 @@
 .back-link-btn:hover {
   background: #dfa3a3;
 }
+
+.del-btn {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+}
+
+.icon:hover {
+  background: rgb(251, 250, 250);
+  border: 1px solid #e44848;
+  border-radius: 100%;
+}

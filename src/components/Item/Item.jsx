@@ -1,12 +1,13 @@
-import { IoMdHeartEmpty } from "react-icons/io";
+import { FaStar } from "react-icons/fa";
 import { IoPeopleOutline } from "react-icons/io5";
 import { LiaBedSolid } from "react-icons/lia";
 import { TbToolsKitchen2 } from "react-icons/tb";
 import { LiaGasPumpSolid } from "react-icons/lia";
 import { TbAutomaticGearbox } from "react-icons/tb";
-import { IoIosStarOutline } from "react-icons/io";
+import { AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 import css from "./Item.module.css";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ModalPage from "../../pages/ModalPage/ModalPage";
 import { useSelector } from "react-redux";
@@ -17,7 +18,10 @@ const Item = ({ item }) => {
   const [modalIsOpen, setIsOpen] = useState(isOpenModal);
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
+  const [heart, setHeart] = useState(() => {
+    const filter = JSON.parse(localStorage.getItem("favoriteItems")) || null;
+    return filter.find((findItem) => findItem.id === item.id) ? item : null;
+  });
 
   const openModal = () => {
     if (!modalIsOpen) {
@@ -51,9 +55,9 @@ const Item = ({ item }) => {
       const updatedFavorites = [...existingFavorites, item];
 
       localStorage.setItem("favoriteItems", JSON.stringify(updatedFavorites));
-    }
 
-    navigate("/favorites");
+      setHeart(item); // Обновление состояния после добавления в избранное
+    }
   };
 
   return (
@@ -65,14 +69,15 @@ const Item = ({ item }) => {
             <div>
               <h3>{item.name}</h3>
               <div className={css["reviews-location"]}>
-                <Link
+                <NavLink
                   to={`/catalog/${item.id}/reviews`}
                   onClick={handleNavigate}
+                  style={{ textDecoration: "underline" }}
                 >
-                  <IoIosStarOutline style={{ color: "#FFC531" }} />
+                  <FaStar style={{ color: "#FFC531" }} />
                   {item.rating}
                   {`(${item.reviews.length} Reviews)`}
-                </Link>
+                </NavLink>
                 <p>{item.location}</p>
               </div>
             </div>
@@ -107,7 +112,13 @@ const Item = ({ item }) => {
 
         <div className={css["price-and-heart"]}>
           <strong>${item.price}</strong>
-          <IoMdHeartEmpty onClick={toFavorite} />
+          <button onClick={toFavorite} className={css["btn-heart"]}>
+            {heart ? (
+              <AiFillHeart size="24px" className={css["full-heart"]} />
+            ) : (
+              <AiOutlineHeart size="24px" className={css["empty-heart"]} />
+            )}
+          </button>
         </div>
       </div>
 
