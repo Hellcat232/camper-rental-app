@@ -14,48 +14,48 @@ export default function CatalogPage() {
     return item.details;
   });
 
-  console.log(filteredArray);
+  // console.log(filteredArray);
 
   useEffect(() => {
     dispatch(getOffers());
   }, [dispatch]);
 
-  const filter = (value, id) => {
-    // let filteredArray = [];
+  const filter = (value) => {
+    let filteredArray = [];
 
-    // console.log(filteredArray);
+    console.log(value);
 
     if (value === "AC") {
       items.filter((item) => {
-        console.log(item, "AC");
+        // console.log(item, "AC");
       });
     } else if (value === "Automatic") {
       items.filter((item) => {
-        console.log(item, "Automatic");
+        // console.log(item, "Automatic");
       });
     } else if (value === "Kitchen") {
       items.filter((item) => {
-        console.log(item, "Kitchen");
+        // console.log(item, "Kitchen");
       });
     } else if (value === "TV") {
       items.filter((item) => {
-        console.log(item, "TV");
+        // console.log(item, "TV");
       });
     } else if (value === "Shower/WC") {
       items.filter((item) => {
-        console.log(item, "Shower/WC");
+        // console.log(item, "Shower/WC");
       });
     } else if (value === "Van") {
       items.filter((item) => {
-        console.log(item, "Van");
+        // console.log(item, "Van");
       });
     } else if (value === "Integrated") {
       items.filter((item) => {
-        console.log(item, "Integrated");
+        // console.log(item, "Integrated");
       });
     } else if (value === "Alcove") {
       items.filter((item) => {
-        console.log(item, "Alcove");
+        // console.log(item, "Alcove");
       });
     }
   };
@@ -63,6 +63,7 @@ export default function CatalogPage() {
   return (
     <>
       <div className={css["catalog-page"]}>
+        {/* <SideBar /> */}
         <SideBar filter={filter} />
         {items.length > 0 && <ListItems />}
       </div>

@@ -15,8 +15,8 @@ import { selectOpenModal } from "../../redux/api/selectors";
 import { IoClose } from "react-icons/io5";
 
 export default function FavoritesPage() {
-  const isOpenModal = useSelector(selectOpenModal);
-  const [modalIsOpen, setIsOpen] = useState(isOpenModal);
+  // const isOpenModal = useSelector(selectOpenModal);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();

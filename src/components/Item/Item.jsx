@@ -14,8 +14,8 @@ import { useSelector } from "react-redux";
 import { selectOpenModal } from "../../redux/api/selectors";
 
 const Item = ({ item }) => {
-  const isOpenModal = useSelector(selectOpenModal);
-  const [modalIsOpen, setIsOpen] = useState(isOpenModal);
+  // const isOpenModal = useSelector(selectOpenModal);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [heart, setHeart] = useState(() => {
