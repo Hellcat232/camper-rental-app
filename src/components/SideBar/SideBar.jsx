@@ -1,4 +1,5 @@
 import css from "./SideBar.module.css";
+import clsx from "clsx";
 import { MdOutlineAir } from "react-icons/md";
 import { TbToolsKitchen2 } from "react-icons/tb";
 import { GiTv } from "react-icons/gi";
@@ -7,7 +8,21 @@ import { TbAutomaticGearbox } from "react-icons/tb";
 import { TbCaravan } from "react-icons/tb";
 import { useState } from "react";
 
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css["equip-black"], isActive && css["equip-red"]);
+};
+
 const SideBar = ({ filter }) => {
+  // const mapping = filters.map((filteredName) => {
+  //   return filteredName;
+  // });
+
+  const handleClick = (name) => {
+    filter(name);
+  };
+
+  // console.log(mapping);
+
   return (
     <div className={css["side-bar"]}>
       <form action="">
@@ -21,48 +36,63 @@ const SideBar = ({ filter }) => {
           />
         </div>
 
-        <div style={{ marginTop: "32px" }}>
-          <p>Filters</p>
-          <h3 className={css["vehicle-equipment-title"]}>Vehicle equipment</h3>
+        <>
+          <div style={{ marginTop: "32px" }}>
+            <p>Filters</p>
+            <h3 className={css["vehicle-equipment-title"]}>
+              Vehicle equipment
+            </h3>
 
-          <ul className={css["equip-list"]}>
-            <li className={css.equip}>
-              <MdOutlineAir className={css["equip-icon"]} /> <p>AC</p>
-            </li>
-            <li className={css.equip}>
-              <TbAutomaticGearbox className={css["equip-icon"]} />{" "}
-              <p>Automatic</p>
-            </li>
-            <li className={css.equip} onChange={() => filter("kitchen")}>
-              <TbToolsKitchen2 className={css["equip-icon"]} /> <p>Kitchen</p>
-            </li>
-            <li className={css.equip}>
-              <GiTv className={css["equip-icon"]} /> TV
-            </li>
-            <li className={css.equip}>
-              <LiaShowerSolid className={css["equip-icon"]} /> <p>Shower/WC</p>
-            </li>
-          </ul>
-        </div>
+            <ul className={css["equip-list"]}>
+              <li className={css.equip} onClick={() => handleClick("AC")}>
+                <MdOutlineAir className={css["equip-icon"]} /> <p>AC</p>
+              </li>
 
-        <div style={{ marginTop: "32px" }}>
-          <h3 className={css["vehicle-type"]}>Vehicle type</h3>
+              <li
+                className={css.equip}
+                onClick={() => handleClick("Automatic")}
+              >
+                <TbAutomaticGearbox className={css["equip-icon"]} />
+                <p>Automatic</p>
+              </li>
+              <li className={css.equip} onClick={() => handleClick("Kitchen")}>
+                <TbToolsKitchen2 className={css["equip-icon"]} /> <p>Kitchen</p>
+              </li>
+              <li className={css.equip} onClick={() => handleClick("TV")}>
+                <GiTv className={css["equip-icon"]} /> TV
+              </li>
+              <li
+                className={css.equip}
+                onClick={() => handleClick("Shower/WC")}
+              >
+                <LiaShowerSolid className={css["equip-icon"]} />
+                <p>Shower/WC</p>
+              </li>
+            </ul>
+          </div>
 
-          <ul className={css["van-list"]}>
-            <li className={css.vans}>
-              <TbCaravan className={css["van-icon"]} />
-              <p>Van</p>
-            </li>
-            <li className={css.vans}>
-              <TbCaravan className={css["van-icon"]} />
-              <p>Integrated</p>
-            </li>
-            <li className={css.vans}>
-              <TbCaravan className={css["van-icon"]} />
-              <p>Alcove</p>
-            </li>
-          </ul>
-        </div>
+          <div style={{ marginTop: "32px" }}>
+            <h3 className={css["vehicle-type"]}>Vehicle type</h3>
+
+            <ul className={css["van-list"]}>
+              <li className={css.vans} onClick={() => handleClick("Van")}>
+                <TbCaravan className={css["van-icon"]} />
+                <p>Van</p>
+              </li>
+              <li
+                className={css.vans}
+                onClick={() => handleClick("Integrated")}
+              >
+                <TbCaravan className={css["van-icon"]} />
+                <p>Integrated</p>
+              </li>
+              <li className={css.vans} onClick={() => handleClick("Alcove")}>
+                <TbCaravan className={css["van-icon"]} />
+                <p>Alcove</p>
+              </li>
+            </ul>
+          </div>
+        </>
 
         <button className={css["search-btn"]}>Search</button>
       </form>
