@@ -18,14 +18,9 @@ const Item = ({ item }) => {
   const [modalIsOpen, setIsOpen] = useState(isOpenModal);
   const navigate = useNavigate();
   const location = useLocation();
-  // const [heart, setHeart] = useState(() => {
-  //   const filter = JSON.parse(localStorage.getItem("favoriteItems")) || null;
-  //   return filter.find((findItem) => findItem.id === item.id) ? item : null;
-  // });
-
   const [heart, setHeart] = useState(() => {
-    const filter = JSON.parse(localStorage.getItem("favoriteItems")) || null;
-    return filter.find((findItem) => findItem.id === item.id);
+    const filter = JSON.parse(localStorage.getItem("favoriteItems")) || [];
+    return filter.find((findItem) => findItem.id === item.id) ? item : null;
   });
 
   const openModal = () => {
