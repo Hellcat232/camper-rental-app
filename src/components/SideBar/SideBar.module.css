@@ -39,6 +39,7 @@
   line-height: 125%;
   text-align: center;
   color: var(--main);
+  cursor: pointer;
 }
 
 .equip:hover {
@@ -79,6 +80,7 @@
   line-height: 125%;
   text-align: center;
   color: var(--main);
+  cursor: pointer;
 }
 
 .vans:hover {

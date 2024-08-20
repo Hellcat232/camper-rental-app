@@ -8,7 +8,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import css from "./Item.module.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalPage from "../../pages/ModalPage/ModalPage";
 import { useSelector } from "react-redux";
 import { selectOpenModal } from "../../redux/api/selectors";

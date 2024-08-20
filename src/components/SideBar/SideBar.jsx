@@ -13,15 +13,13 @@ const buildLinkClass = ({ isActive }) => {
 };
 
 const SideBar = ({ filter }) => {
-  // const mapping = filters.map((filteredName) => {
-  //   return filteredName;
-  // });
-
   const handleClick = (name) => {
     filter(name);
   };
 
-  // console.log(mapping);
+  const onSubmit = (data) => {
+    handleClick(data);
+  };
 
   return (
     <div className={css["side-bar"]}>
@@ -94,7 +92,12 @@ const SideBar = ({ filter }) => {
           </div>
         </>
 
-        <button className={css["search-btn"]}>Search</button>
+        <button
+          className={css["search-btn"]}
+          onSubmit={(e) => onSubmit(e.target.value)}
+        >
+          Search
+        </button>
       </form>
     </div>
   );

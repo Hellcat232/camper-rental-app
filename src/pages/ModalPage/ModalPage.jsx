@@ -1,4 +1,3 @@
-import Modal from "react-modal";
 import clsx from "clsx";
 import { NavLink, Outlet } from "react-router-dom";
 import { getOffersById } from "../../redux/api/operation.js";
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import { IoIosStarOutline } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import css from "./Modal.module.css";
 import { selectItem } from "../../redux/api/selectors.js";
@@ -14,8 +14,6 @@ import { Suspense } from "react";
 import Features from "../../components/Features/Features.jsx";
 import Reviews from "../../components/Reviews/Reviews.jsx";
 import { useState } from "react";
-
-Modal.setAppElement("#root");
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);

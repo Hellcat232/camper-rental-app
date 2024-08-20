@@ -10,32 +10,55 @@ export default function CatalogPage() {
   const dispatch = useDispatch();
   const items = useSelector(selectAllItems);
 
-  const filter = (value) => {
-    switch (value) {
-      case "AC":
-        return console.log(value, "AC");
-      case "Kitchen":
-        return console.log(value, "Kitchen");
-      case "TV":
-        return console.log(value, "TV");
-      case "Automatic":
-        return console.log(value, "Automatic");
-      case "Shower/WC":
-        return console.log(value, "Shower/WC");
-      case "Integrated":
-        return console.log(value, "Integrated");
-      case "Alcove":
-        return console.log(value, "Alcove");
-      case "Van":
-        return console.log(value, "Van");
-      default:
-        break;
-    }
-  };
+  let filteredArray = items.filter((item) => {
+    return item.details;
+  });
+
+  console.log(filteredArray);
 
   useEffect(() => {
     dispatch(getOffers());
   }, [dispatch]);
+
+  const filter = (value, id) => {
+    // let filteredArray = [];
+
+    // console.log(filteredArray);
+
+    if (value === "AC") {
+      items.filter((item) => {
+        console.log(item, "AC");
+      });
+    } else if (value === "Automatic") {
+      items.filter((item) => {
+        console.log(item, "Automatic");
+      });
+    } else if (value === "Kitchen") {
+      items.filter((item) => {
+        console.log(item, "Kitchen");
+      });
+    } else if (value === "TV") {
+      items.filter((item) => {
+        console.log(item, "TV");
+      });
+    } else if (value === "Shower/WC") {
+      items.filter((item) => {
+        console.log(item, "Shower/WC");
+      });
+    } else if (value === "Van") {
+      items.filter((item) => {
+        console.log(item, "Van");
+      });
+    } else if (value === "Integrated") {
+      items.filter((item) => {
+        console.log(item, "Integrated");
+      });
+    } else if (value === "Alcove") {
+      items.filter((item) => {
+        console.log(item, "Alcove");
+      });
+    }
+  };
 
   return (
     <>
