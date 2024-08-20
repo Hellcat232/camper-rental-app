@@ -8,8 +8,6 @@ import SideBar from "../../components/SideBar/SideBar";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
-  const items = useSelector();
-  const [filteredItems, setFilteredItems] = useState(items);
 
   useEffect(() => {
     dispatch(getOffers());
@@ -18,7 +16,7 @@ export default function CatalogPage() {
   return (
     <>
       <div className={css["catalog-page"]}>
-        <SideBar fiiler={filteredCard} />
+        <SideBar />
         {selectAllItems.length > 0 && <ListItems />}
       </div>
     </>
