@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import css from "./ListItems.module.css";
 import { useState } from "react";
 
-const ListItems = () => {
-  const items = useSelector(selectAllItems);
+const ListItems = ({ items }) => {
+  // const items = useSelector(selectAllItems);
 
   const itemsPerPage = 4;
   const [visibleItems, setVisibleItems] = useState(itemsPerPage);

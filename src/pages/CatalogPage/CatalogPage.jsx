@@ -9,55 +9,55 @@ import SideBar from "../../components/SideBar/SideBar";
 export default function CatalogPage() {
   const dispatch = useDispatch();
   const items = useSelector(selectAllItems);
-
-  let filteredArray = items.filter((item) => {
-    return item.details;
-  });
-
-  // console.log(filteredArray);
+  const [filteredItems, setFilteredItems] = useState(items);
 
   useEffect(() => {
     dispatch(getOffers());
   }, [dispatch]);
 
-  const filter = (value) => {
-    let filteredArray = [];
+  useEffect(() => {
+    setFilteredItems(items); // Обновляем фильтрованные элементы при изменении списка items
+  }, [items]);
 
-    console.log(value);
+  const filter = (filtersValue) => {
+    console.log(filtersValue);
+    const filteredArray = items.filter((item) => {
+      const {
+        airConditioner,
+        transmission,
+        kitchen,
+        tv,
+        shower,
+        form,
+        location,
+      } = filtersValue;
 
-    if (value === "AC") {
-      items.filter((item) => {
-        // console.log(item, "AC");
-      });
-    } else if (value === "Automatic") {
-      items.filter((item) => {
-        // console.log(item, "Automatic");
-      });
-    } else if (value === "Kitchen") {
-      items.filter((item) => {
-        // console.log(item, "Kitchen");
-      });
-    } else if (value === "TV") {
-      items.filter((item) => {
-        // console.log(item, "TV");
-      });
-    } else if (value === "Shower/WC") {
-      items.filter((item) => {
-        // console.log(item, "Shower/WC");
-      });
-    } else if (value === "Van") {
-      items.filter((item) => {
-        // console.log(item, "Van");
-      });
-    } else if (value === "Integrated") {
-      items.filter((item) => {
-        // console.log(item, "Integrated");
-      });
-    } else if (value === "Alcove") {
-      items.filter((item) => {
-        // console.log(item, "Alcove");
-      });
-    }
+      const matchesAirConditioner = airConditioner
+        ? item.details.airConditioner
+        : true;
+      const matchesTransmission = transmission
+        ? item.details.transmission === transmission
+        : true;
+      const matchesKitchen = kitchen ? item.details.kitchen : true;
+      const matchesTV = tv ? item.details.tv : true;
+      const matchesShower = shower ? item.details.shower : true;
+      const matchesForm = form ? item.details.form === form : true;
+      const matchesLocation = location
+        ? item.location.includes(location)
+        : true;
+
+      return (
+        matchesAirConditioner &&
+        matchesTransmission &&
+        matchesKitchen &&
+        matchesTV &&
+        matchesShower &&
+        matchesForm &&
+        matchesLocation
+      );
+    });
+
+    setFilteredItems(filteredArray);
   };
 
   return (
@@ -65,7 +65,11 @@ export default function CatalogPage() {
       <div className={css["catalog-page"]}>
         {/* <SideBar /> */}
         <SideBar filter={filter} />
-        {items.length > 0 && <ListItems />}
+        {filteredItems.length > 0 ? (
+          <ListItems items={filteredItems} />
+        ) : (
+          <p>No found items</p>
+        )}
       </div>
     </>
   );
