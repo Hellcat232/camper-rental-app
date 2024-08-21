@@ -43,7 +43,7 @@ const NavBar = () => {
   };
 
   return (
-    <div style={{ borderBottom: "1px solid black" }}>
+    <header style={{ borderBottom: "1px solid black" }}>
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -67,7 +67,7 @@ const NavBar = () => {
         <MenuItem onClick={toCatalog}>Catalog</MenuItem>
         <MenuItem onClick={toFavorite}>Favorite</MenuItem>
       </Menu>
-    </div>
+    </header>
   );
 };
 
