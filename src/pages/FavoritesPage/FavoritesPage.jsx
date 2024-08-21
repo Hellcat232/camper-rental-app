@@ -21,7 +21,6 @@ import { selectOpenModal } from "../../redux/api/selectors";
 import { IoClose } from "react-icons/io5";
 
 export default function FavoritesPage() {
-  // const isOpenModal = useSelector(selectOpenModal);
   const [modalIsOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,10 +28,6 @@ export default function FavoritesPage() {
   const [favoritesItems, setFavoritesItems] = useState(
     JSON.parse(localStorage.getItem("favoriteItems")) || []
   );
-
-  const handleCardClick = () => {
-    navigate(`/catalog`);
-  };
 
   const openModal = (id) => {
     if (!modalIsOpen) {
@@ -68,7 +63,7 @@ export default function FavoritesPage() {
   return (
     <div className={css.list}>
       <div style={{ display: "flex" }}>
-        <NavLink onClick={handleCardClick} className={css["back-link-btn"]}>
+        <NavLink to="/catalog" className={css["back-link-btn"]}>
           Back to Catalog
         </NavLink>
       </div>
