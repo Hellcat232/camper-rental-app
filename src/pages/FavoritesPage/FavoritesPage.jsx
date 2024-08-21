@@ -1,4 +1,10 @@
-import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
+import {
+  useNavigate,
+  Link,
+  useLocation,
+  useParams,
+  NavLink,
+} from "react-router-dom";
 import css from "./FavoritesPage.module.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -62,9 +68,9 @@ export default function FavoritesPage() {
   return (
     <div className={css.list}>
       <div style={{ display: "flex" }}>
-        <button onClick={handleCardClick} className={css["back-link-btn"]}>
-          Back Link
-        </button>
+        <NavLink onClick={handleCardClick} className={css["back-link-btn"]}>
+          Back to Catalog
+        </NavLink>
       </div>
       {favoritesItems.length > 0 &&
         favoritesItems.map((item) => {

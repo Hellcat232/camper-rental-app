@@ -111,17 +111,19 @@
 }
 
 .back-link-btn {
-  background: #e44848;
-  color: #fff;
+  /* background: #e44848; */
+  color: #e44848;
   border-radius: 200px;
   padding: 16px 40px;
-  width: 166px;
+  width: 200px;
   height: 56px;
   border: none;
 }
 
 .back-link-btn:hover {
-  background: #dfa3a3;
+  /* background: #dfa3a3; */
+  /* border: 1px solid #e44848; */
+  text-decoration: underline;
 }
 
 .del-btn {

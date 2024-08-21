@@ -20,8 +20,9 @@ const CampInfo = ({ details }) => {
     <div className={css.div}>
       <span className={css["details-item"]}>
         <MdOutlineAir />
-        AC {details.airConditioner}
+        {details.airConditioner} AC
       </span>
+
       <span className={css["details-item"]}>
         <MdOutlineBathroom /> {details.bathroom} bathroom
       </span>
@@ -32,43 +33,35 @@ const CampInfo = ({ details }) => {
         <LiaBedSolid /> {details.beds} beds
       </span>
       <span className={css["details-item"]}>
-        <GiTv /> {details.TV}
-        TV
+        <GiTv /> {details.TV} TV
       </span>
       <span className={css["details-item"]}>
-        <LuDisc3 /> {details.CD}
-        CD
+        <LuDisc3 /> {details.CD} CD
       </span>
       <span className={css["details-item"]}>
         <HiOutlineRadio /> {details.radio} radio
       </span>
       <span className={css["details-item"]}>
-        <LiaShowerSolid /> {details.shower}
-        shower
+        <LiaShowerSolid /> {details.shower} shower
       </span>
       <span className={css["details-item"]}>
-        <TbToiletPaper /> {details.toilet}
-        toilet
+        <TbToiletPaper /> {details.toilet} toilet
       </span>
       <span className={css["details-item"]}>
-        <TbFridge /> {details.freezer}
-        freezer
+        <TbFridge /> {details.freezer} freezer
       </span>
       <span className={css["details-item"]}>
-        <TbCooker /> {details.hob}
-        hob
+        <TbCooker /> {details.hob} hob
       </span>
       <span className={css["details-item"]}>
-        <LuMicrowave /> {details.microwave}
-        microwave
+        <LuMicrowave /> {details.microwave} microwave
       </span>
       <span className={css["details-item"]}>
         <FaGripfire /> {details.gas}
         gas
       </span>
       <span className={css["details-item"]}>
-        <IoWaterOutline /> {details.water}
-        water
+        <IoWaterOutline /> {details.water} water
       </span>
     </div>
   );
