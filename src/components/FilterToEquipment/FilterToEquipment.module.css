@@ -1,17 +1,17 @@
-.vehicle-type {
+.vehicle-equipment-title {
   border-bottom: 1px solid gray;
   padding-bottom: 24px;
   margin-bottom: 24px;
 }
 
-.van-list {
+.equip-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.vans {
+.equip {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -32,21 +32,21 @@
   transition: border-color 0.3s;
 }
 
-.vans:hover {
+.equip:hover {
   border: 1px solid #e44848;
 }
 
-.van-icon {
-  width: 24px;
-  height: 24px;
+.label {
+  cursor: pointer;
+  padding: 20px 40px;
 }
 
-input[type="radio"] {
+input[type="checkbox"] {
   display: none;
   cursor: pointer;
 }
 
-input[type="radio"]:checked + label::before {
+input[type="checkbox"]:checked + label::before {
   content: "";
   position: absolute;
   top: 0;
@@ -57,7 +57,7 @@ input[type="radio"]:checked + label::before {
   border: 1px solid #e44848;
 }
 
-.label {
-  cursor: pointer;
-  padding: 20px 40px;
+.equip-icon {
+  width: 24px;
+  height: 24px;
 }
