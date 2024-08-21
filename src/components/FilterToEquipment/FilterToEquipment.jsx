@@ -32,7 +32,7 @@ const FilterToEquipment = ({ filtersValue, handleCheckboxChange }) => {
               type="checkbox"
               id="transmission"
               name="transmission"
-              // value="Automatic"
+              // value="automatic"
               checked={filtersValue.transmission}
               onChange={handleCheckboxChange}
             />

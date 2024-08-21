@@ -20,7 +20,6 @@ export default function CatalogPage() {
   }, [items]);
 
   const filter = (filtersValue) => {
-    console.log(filtersValue);
     const filteredArray = items.filter((item) => {
       const {
         airConditioner,
@@ -36,15 +35,17 @@ export default function CatalogPage() {
         ? item.details.airConditioner
         : true;
       const matchesTransmission = transmission
-        ? item.details.transmission === transmission
+        ? item.transmission === transmission
         : true;
       const matchesKitchen = kitchen ? item.details.kitchen : true;
-      const matchesTV = tv ? item.details.tv : true;
+      const matchesTV = tv ? item.details.TV : true;
       const matchesShower = shower ? item.details.shower : true;
-      const matchesForm = form ? item.details.form === form : true;
+      const matchesForm = form ? item.form === form : true;
       const matchesLocation = location
         ? item.location.includes(location)
         : true;
+
+      console.log(matchesTransmission);
 
       return (
         matchesAirConditioner &&

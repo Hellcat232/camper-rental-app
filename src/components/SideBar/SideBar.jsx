@@ -14,6 +14,8 @@ const SideBar = ({ filter }) => {
     form: "",
   });
 
+  console.log(filtersValue);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFiltersValue((prevFilters) => ({
