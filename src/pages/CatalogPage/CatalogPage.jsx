@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./Catalog.module.css";
 import ListItems from "../../components/ListItems/ListItems";
-import { selectAllItems } from "../../redux/api/selectors";
+import { selectAllItems, selectLoading } from "../../redux/api/selectors";
 import SideBar from "../../components/SideBar/SideBar";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
   const items = useSelector(selectAllItems);
+  const isLoading = useSelector(selectLoading);
   const [filteredItems, setFilteredItems] = useState(items);
 
   useEffect(() => {
@@ -68,7 +69,9 @@ export default function CatalogPage() {
         {filteredItems.length > 0 ? (
           <ListItems items={filteredItems} />
         ) : (
-          <p>No found items</p>
+          <p className={css["not-found"]}>
+            No found items! Try select another filter
+          </p>
         )}
       </div>
     </>

@@ -5,3 +5,13 @@
   align-items: stretch;
   gap: 64px;
 }
+
+.not-found {
+  margin-top: 30px;
+  width: 890px;
+  margin-right: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
