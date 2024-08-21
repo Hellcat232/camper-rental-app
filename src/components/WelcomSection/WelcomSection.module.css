@@ -14,10 +14,9 @@
   right: 100px;
 }
 
-.image {
+/* .image {
   height: 100vh;
   width: 1000px;
-  /* position: fixed; */
   right: 800px;
   top: 0;
   background-image: linear-gradient(
@@ -26,6 +25,22 @@
       rgba(0, 0, 0, 0.1)
     ),
     url(https://as1.ftcdn.net/v2/jpg/08/09/67/58/1000_F_809675821_5fpitkyRwgkrwL6MngMJVyb5rXvXHVIe.jpg);
+  background-size: cover;
+  background-position: 100%;
+} */
+
+.image {
+  height: 100vh;
+  width: 90%;
+  /* position: fixed; */
+  right: 800px;
+  top: 0;
+  background-image: linear-gradient(
+      to left,
+      rgb(255, 255, 255),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url(https://cdn.pixabay.com/photo/2024/07/19/09/55/ai-generated-8905944_1280.png);
   background-size: cover;
   background-position: 100%;
 }
