@@ -16,7 +16,7 @@ export default function CatalogPage() {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredItems(items); // Обновляем фильтрованные элементы при изменении списка items
+    setFilteredItems(items);
   }, [items]);
 
   const filter = (filtersValue) => {
@@ -64,7 +64,6 @@ export default function CatalogPage() {
   return (
     <>
       <div className={css["catalog-page"]}>
-        {/* <SideBar /> */}
         <SideBar filter={filter} />
         {filteredItems.length > 0 ? (
           <ListItems items={filteredItems} />

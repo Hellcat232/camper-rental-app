@@ -26,9 +26,12 @@ const SideBar = ({ filter }) => {
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
+
+    console.log(name, checked, "handleCheckboxChange");
+
     setFiltersValue((prevFilters) => ({
       ...prevFilters,
-      [name]: checked,
+      [name]: name === "transmission" ? (checked ? "automatic" : "") : checked,
     }));
   };
 

@@ -32,8 +32,8 @@ const FilterToEquipment = ({ filtersValue, handleCheckboxChange }) => {
               type="checkbox"
               id="transmission"
               name="transmission"
-              // value="automatic"
-              checked={filtersValue.transmission}
+              value="automatic"
+              checked={filtersValue.transmission === "automatic"}
               onChange={handleCheckboxChange}
             />
             <label htmlFor="transmission" className={css.label}>
