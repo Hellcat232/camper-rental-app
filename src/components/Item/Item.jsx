@@ -10,11 +10,8 @@ import css from "./Item.module.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ModalPage from "../../pages/ModalPage/ModalPage";
-import { useSelector } from "react-redux";
-import { selectOpenModal } from "../../redux/api/selectors";
 
 const Item = ({ item }) => {
-  // const isOpenModal = useSelector(selectOpenModal);
   const [modalIsOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();

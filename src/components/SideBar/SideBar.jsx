@@ -38,15 +38,6 @@ const SideBar = ({ filter }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     filter(filtersValue);
-    setFiltersValue({
-      location: "",
-      transmission: "",
-      kitchen: false,
-      tv: false,
-      shower: false,
-      airConditioner: false,
-      form: "",
-    });
   };
 
   const handleVehicleTypeChange = (e) => {

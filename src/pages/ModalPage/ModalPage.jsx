@@ -4,7 +4,7 @@ import { getOffersById } from "../../redux/api/operation.js";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
-import { IoIosStarOutline } from "react-icons/io";
+import { FaStar } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
@@ -95,8 +95,8 @@ export default function ModalDetails({ modalIsOpen, closeModal, itemID }) {
                 </div>
 
                 <div className={css["review-and-location"]}>
-                  <Link to="reviews">
-                    <IoIosStarOutline style={{ color: "#FFC531" }} />
+                  <Link /*to={`/catalog/${item.id}/reviews`}*/>
+                    <FaStar style={{ color: "#FFC531" }} />
                     {item.rating}
                     {`(${item.reviews.length} Reviews)`}
                   </Link>

@@ -18,51 +18,79 @@ import { IoWaterOutline } from "react-icons/io5";
 const CampInfo = ({ details }) => {
   return (
     <div className={css.div}>
-      <span className={css["details-item"]}>
-        <MdOutlineAir />
-        {details.airConditioner} AC
-      </span>
+      <li>
+        <span className={css["details-item"]}>
+          <MdOutlineAir />
+          {details.airConditioner} AC
+        </span>
+      </li>
 
-      <span className={css["details-item"]}>
-        <MdOutlineBathroom /> {details.bathroom} bathroom
-      </span>
-      <span className={css["details-item"]}>
-        <TbToolsKitchen2 /> {details.kitchen} kitchen
-      </span>
-      <span className={css["details-item"]}>
-        <LiaBedSolid /> {details.beds} beds
-      </span>
-      <span className={css["details-item"]}>
-        <GiTv /> {details.TV} TV
-      </span>
-      <span className={css["details-item"]}>
-        <LuDisc3 /> {details.CD} CD
-      </span>
-      <span className={css["details-item"]}>
-        <HiOutlineRadio /> {details.radio} radio
-      </span>
-      <span className={css["details-item"]}>
-        <LiaShowerSolid /> {details.shower} shower
-      </span>
-      <span className={css["details-item"]}>
-        <TbToiletPaper /> {details.toilet} toilet
-      </span>
-      <span className={css["details-item"]}>
-        <TbFridge /> {details.freezer} freezer
-      </span>
-      <span className={css["details-item"]}>
-        <TbCooker /> {details.hob} hob
-      </span>
-      <span className={css["details-item"]}>
-        <LuMicrowave /> {details.microwave} microwave
-      </span>
-      <span className={css["details-item"]}>
-        <FaGripfire /> {details.gas}
-        gas
-      </span>
-      <span className={css["details-item"]}>
-        <IoWaterOutline /> {details.water} water
-      </span>
+      <li>
+        <span className={css["details-item"]}>
+          <MdOutlineBathroom /> {details.bathroom} bathroom
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <TbToolsKitchen2 /> {details.kitchen} kitchen
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <LiaBedSolid /> {details.beds} beds
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <GiTv /> {details.TV} TV
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <LuDisc3 /> {details.CD} CD
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <HiOutlineRadio /> {details.radio} radio
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <LiaShowerSolid /> {details.shower} shower
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <TbToiletPaper /> {details.toilet} toilet
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <TbFridge /> {details.freezer} freezer
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <TbCooker /> {details.hob} hob
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <LuMicrowave /> {details.microwave} microwave
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <FaGripfire /> {details.gas}
+          gas
+        </span>
+      </li>
+      <li>
+        <span className={css["details-item"]}>
+          <IoWaterOutline /> {details.water} water
+        </span>
+      </li>
     </div>
   );
 };
