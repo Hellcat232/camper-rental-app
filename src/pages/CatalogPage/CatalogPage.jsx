@@ -69,9 +69,15 @@ export default function CatalogPage() {
         {filteredItems.length > 0 ? (
           <ListItems items={filteredItems} />
         ) : (
-          <p className={css["not-found"]}>
-            No found items! Try select another filter
-          </p>
+          <>
+            {isLoading ? (
+              <p className={css["not-found"]}>Loading...</p>
+            ) : (
+              <p className={css["not-found"]}>
+                No found items! Try select another filter
+              </p>
+            )}
+          </>
         )}
       </div>
     </>
