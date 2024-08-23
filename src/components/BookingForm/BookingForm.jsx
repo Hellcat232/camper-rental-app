@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectOpenModal } from "../../redux/api/selectors";
+import toast from "react-hot-toast";
 
 const Validation = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -15,7 +16,8 @@ const Validation = yup.object().shape({
 
 const BookingForm = ({ item }) => {
   const isOpenModal = useSelector(selectOpenModal);
-  const [modalIsOpen, setIsOpen] = useState(isOpenModal);
+  // const [modalIsOpen, setIsOpen] = useState(isOpenModal);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -34,6 +36,7 @@ const BookingForm = ({ item }) => {
   };
 
   const toCatalog = () => {
+    toast.success("Book success");
     navigate(`/catalog`);
   };
 
