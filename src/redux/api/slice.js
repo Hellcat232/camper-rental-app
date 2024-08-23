@@ -7,6 +7,8 @@ const initialState = {
   error: false,
   loading: false,
   openModal: false,
+  isLoggedIn: true,
+  user: null,
 };
 
 const campsSlice = createSlice({
@@ -20,6 +22,7 @@ const campsSlice = createSlice({
         state.error = false;
         state.loading = true;
         state.openModal = false;
+        state.isLoggedIn = true;
       })
       .addCase(getOffers.fulfilled, (state, action) => {
         state.allItem = action.payload;
@@ -27,6 +30,7 @@ const campsSlice = createSlice({
         state.error = false;
         state.loading = false;
         state.openModal = false;
+        state.isLoggedIn = true;
       })
       .addCase(getOffers.rejected, (state, action) => {
         state.allItem = initialState.allItem;
@@ -34,35 +38,32 @@ const campsSlice = createSlice({
         state.error = true;
         state.loading = false;
         state.openModal = false;
+        state.isLoggedIn = true;
       })
       .addCase(getOffersById.pending, (state, action) => {
         // state.item = state.allItem;
         state.error = false;
         state.loading = true;
         state.openModal = false;
+        state.isLoggedIn = true;
       })
       .addCase(getOffersById.fulfilled, (state, action) => {
+        state.isLoggedIn = true;
         state.error = false;
         state.loading = false;
         state.openModal = true;
         const foundItem = state.allItem.find(
           (item) => item.id === action.payload.id
         );
-        // console.log(foundItem, "foundItem");
-
-        // state.item = foundItem || [];
 
         state.item = [action.payload];
-
-        // state.item.push(action.payload);
-
-        // console.log("item", state.item);
       })
       .addCase(getOffersById.rejected, (state, action) => {
         state.item = initialState.item;
         state.error = true;
         state.loading = false;
         state.openModal = false;
+        state.isLoggedIn = true;
       });
   },
 });

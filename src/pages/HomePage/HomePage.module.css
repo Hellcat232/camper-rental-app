@@ -1,0 +1,15 @@
+.btn {
+  position: absolute;
+  top: 260px;
+  left: 75%;
+  background: transparent;
+  color: black;
+  border-radius: 200px;
+
+  border: none;
+  margin-bottom: 30px;
+}
+.btn:hover {
+  background: #dfa3a3;
+  text-decoration: underline;
+}

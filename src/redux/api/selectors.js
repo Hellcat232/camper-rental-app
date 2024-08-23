@@ -3,3 +3,4 @@ export const selectItem = (state) => state.camps.item;
 export const selectError = (state) => state.camps.error;
 export const selectLoading = (state) => state.camps.loading;
 export const selectOpenModal = (state) => state.camps.openModal;
+export const selectIsLoggedIn = (state) => state.camps.isLoggedIn;

@@ -1,3 +1,11 @@
+.header {
+  border-bottom: 2px solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .link {
   font-family: var(--font-family);
   font-weight: 600;
@@ -22,4 +30,17 @@
   height: 4px;
   background-color: #e44848;
   z-index: -1;
+}
+
+.logout-btn {
+  background: #e44848;
+  color: #fff;
+  border-radius: 200px;
+  width: 100px;
+  height: 26px;
+  border: none;
+  margin-right: 20px;
+}
+.logout-btn:hover {
+  background: #dfa3a3;
 }
