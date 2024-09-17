@@ -1,13 +1,14 @@
 .btn {
   position: absolute;
-  top: 260px;
-  left: 75%;
+  top: 28%;
+
+  right: 224px;
   background: transparent;
   color: black;
   border-radius: 200px;
-
+  z-index: 1;
   border: none;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .btn:hover {
   background: #dfa3a3;
