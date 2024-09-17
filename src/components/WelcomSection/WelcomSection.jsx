@@ -5,7 +5,7 @@ const WelcomeSection = () => {
     <>
       <div className={css.welcome}>
         <div className={css.title}>
-          <h1>Welcom adventures</h1>
+          <h1>Welcome adventures</h1>
           <p>
             If you finding something to self relax, check our page and make
             book!
